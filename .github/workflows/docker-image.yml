@@ -61,7 +61,7 @@ jobs:
           file: Dockerfile-jdk21
           push: true
           tags: |
-            jalena/jdk/alpine-cn:21
+            jalena/java/jdk/alpine-cn:21
             docker.cnb.cool/youvigo/base/java/jdk:21
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -73,7 +73,7 @@ jobs:
           file: Dockerfile-jre21
           push: true
           tags: |
-            jalena/jre/alpine-cn:21
+            jalena/java/jre/alpine-cn:21
             docker.cnb.cool/youvigo/base/java/jre:21
           cache-from: type=gha
           cache-to: type=gha,mode=max

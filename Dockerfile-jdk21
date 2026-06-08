@@ -2,9 +2,10 @@ FROM eclipse-temurin:21-jdk-alpine
 
 LABEL maintainer="jalena@bcsytv.com"
 
-RUN apk --no-cache --update add tzdata fontconfig ttf-dejavu && \
-    fc-cache --force && \
+RUN apk add --no-cache tzdata fontconfig ttf-dejavu ca-certificates && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo "Asia/Shanghai" > /etc/timezone
+    echo "Asia/Shanghai" > /etc/timezone && \
+    fc-cache -f -v && \
+    rm -rf /var/cache/apk/*
 
 COPY ./font /usr/share/fonts/win/
