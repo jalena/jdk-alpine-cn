@@ -36,22 +36,9 @@ jobs:
           file: Dockerfile-jdk17
           push: true
           tags: |
-            jalena/java/jdk-alpine-cn:latest
-            jalena/java/jdk-alpine-cn:17
-            docker.cnb.cool/youvigo/base/java/jdk:17
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-      - name: Build and push Jre17
-        uses: docker/build-push-action@v7
-        with:
-          context: .
-          file: Dockerfile-jre17
-          push: true
-          tags: |
-            jalena/java/jre/alpine-cn:latest
-            jalena/java/jre/alpine-cn:17
-            docker.cnb.cool/youvigo/base/java/jre:17
+            jalena/jdk-alpine-cn:latest
+            jalena/jdk-alpine-cn:17
+            docker.cnb.cool/youvigo/base/jdk-alpine-cn:17
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -62,8 +49,21 @@ jobs:
           file: Dockerfile-jdk21
           push: true
           tags: |
-            jalena/java/jdk/alpine-cn:21
-            docker.cnb.cool/youvigo/base/java/jdk:21
+            jalena/jdk-alpine-cn:21
+            docker.cnb.cool/youvigo/base/jdk-alpine-cn:21
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push Jre17
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile-jre17
+          push: true
+          tags: |
+            jalena/jre-alpine-cn:latest
+            jalena/jre-alpine-cn:17
+            docker.cnb.cool/youvigo/base/jre-alpine-cn:17
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -74,8 +74,8 @@ jobs:
           file: Dockerfile-jre21
           push: true
           tags: |
-            jalena/java/jre/alpine-cn:21
-            docker.cnb.cool/youvigo/base/java/jre:21
+            jalena/jre-alpine-cn:21
+            docker.cnb.cool/youvigo/base/jre-alpine-cn:21
           cache-from: type=gha
           cache-to: type=gha,mode=max
         
