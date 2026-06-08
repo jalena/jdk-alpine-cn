@@ -1,10 +1,6 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   schedule:
     - cron: '0 0 1 * *'
 
@@ -36,12 +32,25 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: Dockerfile-17
+          file: Dockerfile-jdk17
           push: true
           tags: |
-            jalena/jdk-alpine-cn:latest
-            jalena/jdk-alpine-cn:17
-            docker.cnb.cool/youvigo/base/jdk:17
+            jalena/java/jdk-alpine-cn:latest
+            jalena/java/jdk-alpine-cn:17
+            docker.cnb.cool/youvigo/base/java/jdk:17
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push Jre17
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile-jre17
+          push: true
+          tags: |
+            jalena/java/jre/alpine-cn:latest
+            jalena/java/jre/alpine-cn:17
+            docker.cnb.cool/youvigo/base/java/jre:17
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -49,11 +58,23 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: Dockerfile-21
+          file: Dockerfile-jdk21
           push: true
           tags: |
-            jalena/jdk-alpine-cn:21
-            docker.cnb.cool/youvigo/base/jdk:21
+            jalena/jdk/alpine-cn:21
+            docker.cnb.cool/youvigo/base/java/jdk:21
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build and push Jre21
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: Dockerfile-jre21
+          push: true
+          tags: |
+            jalena/jre/alpine-cn:21
+            docker.cnb.cool/youvigo/base/java/jre:21
           cache-from: type=gha
           cache-to: type=gha,mode=max
         
